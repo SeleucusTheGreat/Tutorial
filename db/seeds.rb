@@ -9,6 +9,8 @@
 #   end
 
 
+User.create(email:"johnnybegood@email.com" , password:"password" , password_confirmation: "password", name:"Johnny")
+
 10.times do |x| 
-    Post.create(title: "my name is #{x}", body: "lalalalalalalal #{x}")
+    Post.create(title: "my name is #{x}", body: "lalalalalalalaladsasdasdasdasdasdasdasddadsdasdasds #{x}" , user_id: User.first.id)
 end

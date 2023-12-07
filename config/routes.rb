@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     sessions: "users/sessions",
     registrations: "users/registrations"
   }
-  get "/u/1", to: "users#profile", as: "user"
+  get "/u/:id", to: "users#profile", as: "user"
   resources :posts
   get 'home', to: 'pages#home'
   get 'about', to: 'pages#about'

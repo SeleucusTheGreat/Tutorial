@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = Post.new( body: "questo è un nuovo post")
   end
 
   # GET /posts/1/edit

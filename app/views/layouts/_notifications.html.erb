@@ -1,0 +1,20 @@
+<% if current_user%>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="badge rounded-pill bg-danger">
+                <%= @unread.count >= 9 ? "9+" : @unread.count %> <i class="bi bi-bell"></i>
+            </span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
+            <%= @unread.each do |notification| %>
+                <li class="dropdown-item">
+                    <%= link_to notification.to_notification.message , notification.to_notification.url%>
+                </li>
+            <%end%>
+            <% if @read.count >0 && @unread.count >0 %>
+                <li>
+                    </hr class="dropdown-divider">
+                </li>
+            <%end%>
+        </ul>
+<%end%>

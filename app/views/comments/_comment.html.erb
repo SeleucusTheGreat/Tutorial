@@ -1,5 +1,5 @@
 <div class="comment-<%= comment.id %> container" style = "border: 1px solid black; padding: 1em; margin: 1em;">
-    <%= comment.user.name%> <br/>
+    <h1 data-controller="comments" data-comments-target="name" data-action="click->comments#getUserName"> <%= comment.user.name%>  </h1><br/>
     <% if (comment.updated_at - comment.created_at) > 1%>
         <span> Edited <%= time_ago_in_words(comment.updated_at) %> ago</span>
         <% else %>
@@ -15,7 +15,7 @@
             }%>
             <%= button_to "delete", [post, comment], class:"btn btn-danger", method: :delete%>
         </div>
-        <div id="edit-form-<%= comment.id%>" class ="d-none">
+        <div id="edit-form-<%= comment.id%>" class ="d-none" >
             <%= render "comments/form", post: @post , comment: comment , submit_label: "Update"%>
         </div>
     <%end %>

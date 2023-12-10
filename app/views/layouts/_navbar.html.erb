@@ -16,7 +16,8 @@
           <%= link_to "Posts", posts_path, class:"nav-link active"%>
         </li>
       </ul>
-      <ul>
+      <ul class="navbar-nav">
+          <%= render "layouts/notifications"%>
           <%= render "user/session_manager"%>
       </ul>
     </div>

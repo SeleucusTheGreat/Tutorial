@@ -11,6 +11,7 @@ class PostsController < ApplicationController
   def show
     @post.update(views: @post.views + 1)
     @comments = @post.comments
+    mark_notification_as_read
   end
 
   # GET /posts/new
@@ -70,5 +71,14 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:title, :body)
+    end
+
+    def mark_notification_as_read
+      if current_user
+        notifications_to_mark_as_read = @post.notifications_as_post.where(recipient: current_user)
+        notifications_to_mark_as_read.each do |notification|  
+          notification.mark_as_read!
+        end
+      end
     end
 end

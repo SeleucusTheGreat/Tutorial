@@ -1,0 +1,7 @@
+<li class="dropdown-item">
+    <% if ayaya  %>
+        <%= link_to notification.to_notification.message , notification.to_notification.url , class:"link-secondary"%>
+    <%else%>
+        <%= link_to notification.to_notification.message , notification.to_notification.url , class:"link-primary" %>
+    <% end%>
+</li>

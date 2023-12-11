@@ -9,9 +9,11 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+   def create
+     super
+     #@post = Post.find(params[:post])
+     #redirect_to post_path(@post)
+   end
 
   # DELETE /resource/sign_out
   # def destroy

@@ -2,7 +2,9 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: %i[show index]
 
-  
+  def my_posts
+    @posts = Post.where(user_id: params[:user_id])
+  end
 
   # GET /posts or /posts.json
   def index
@@ -68,6 +70,10 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+    end
+
+    def set_my_posts
+      @post = Post.where(params[:user_name])
     end
 
     # Only allow a list of trusted parameters through.

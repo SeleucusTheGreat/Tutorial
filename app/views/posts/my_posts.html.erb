@@ -8,7 +8,7 @@
                 <div class ="card-body mb-4">
                     <%= render post %>
                     <div>
-                        <div class="small d-flex justify-content-start">
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example"">
                             <%= link_to "Edit this post", edit_post_path(post) , class:"btn btn-warning"%> 
                             <%= link_to "Back to posts", posts_path , class:"btn btn-primary" %> 
                             <%=button_to "Destroy this post", post, method: :delete , class:"btn btn-secondary"  %> 
@@ -28,3 +28,4 @@
         </div>
     </div>
 </div>
+

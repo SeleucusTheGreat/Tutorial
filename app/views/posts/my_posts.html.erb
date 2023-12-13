@@ -1,0 +1,31 @@
+    <div class="form-outline mb-4">
+                
+                <h1>My posts</h1>
+    </div>
+    <%@posts.each do |post|%>
+    <div class="card  " >
+            <div class="card-body mb-4">
+                <div class ="card-body mb-4">
+                    <%= render post %>
+                    <div>
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example"">
+                            <%= link_to "Edit this post", edit_post_path(post) , class:"btn btn-warning"%> 
+                            <%= link_to "Back to posts", posts_path , class:"btn btn-primary" %> 
+                            <%=button_to "Destroy this post", post, method: :delete , class:"btn btn-secondary"  %> 
+                            <%= link_to "Show this post", post , class:"btn btn-info"%> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <%end%>
+    </div>
+<div class="card-body mb-4">
+    <div class="container">
+        <div class="d-flex flex-column">
+        
+                <%= link_to "Create a new Post", new_post_path(@post) , class:"btn btn-primary"%> 
+            
+        </div>
+    </div>
+</div>
+

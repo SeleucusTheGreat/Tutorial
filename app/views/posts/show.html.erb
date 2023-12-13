@@ -15,5 +15,18 @@
   <% @comments.each do |comment|%>
     <%= render "comments/comment", post: @post, comment: comment %>
   <%end%>
-  <%= render "comments/form", post: @post, comment: @post.comments.build , submit_label: "Reply"%>
+  <%if current_user%>
+    <%= render "comments/form", post: @post, comment: @post.comments.build , submit_label: "Reply"%>
+  <%else%>
+    
+    <strong class="container "> you need to be 
+      <div class="badge bg-primary text-wrap">
+        <%= link_to "Logged in" , new_user_session_path, class:"link-light"%>
+      </div> to write a comment or sign 
+      <div class="badge bg-primary text-wrap">
+        <%= link_to "Here" , new_user_registration_path, class:"link-light"%>
+      </div> to write a comment or sign 
+    </strong>
+    
+  <%end%>
 </div>

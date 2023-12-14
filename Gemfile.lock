@@ -114,6 +114,8 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    friendly_id (5.5.1)
+      activerecord (>= 4.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     http (5.1.1)
@@ -238,6 +240,10 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    slug (4.1.1)
+      activerecord (> 3.0.0)
+      activesupport (> 3.0.0)
+      rake
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -282,6 +288,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   error_highlight (>= 0.4.0)
+  friendly_id (~> 5.5)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
@@ -290,6 +297,7 @@ DEPENDENCIES
   rails (~> 7.1.1)
   ransack (~> 4.1)
   selenium-webdriver
+  slug
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails

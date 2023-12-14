@@ -46,7 +46,9 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     respond_to do |format|
-      if @post.update(post_params)
+      par = post_params
+      #par[:slug] = par[:title]
+      if @post.update(par)
         format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -71,6 +73,7 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+      redirect_to @post, status: :moved_permanently if params[:id] !=@post.slug
     end
 
     def set_my_posts
@@ -79,7 +82,9 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :slug)
+
+      
     end
 
     def mark_notification_as_read

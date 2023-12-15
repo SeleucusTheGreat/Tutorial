@@ -3,18 +3,18 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[show index]
 
   def my_posts
-    @posts = Post.where(user_id: params[:user_id])
+    @posts = Post.includes([:user]).where(user_id: params[:user_id])
   end
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.includes([:user]).all.order(created_at: :desc)
   end
 
   # GET /posts/1 or /posts/1.json
   def show
     @post.update(views: @post.views + 1)
-    @comments = @post.comments
+    @comments = @post.comments.includes([:user, :rich_text_body])
     mark_notification_as_read
   end
 

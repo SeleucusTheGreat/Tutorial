@@ -13,6 +13,6 @@ class AdminController < ApplicationController
   end
 
   def show_post
-    @post = Post.includes(:user).find(params[:id])
+    @post = Post.includes(:user).friendly.find(params[:id])
   end
 end

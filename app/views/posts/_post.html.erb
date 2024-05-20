@@ -1,9 +1,12 @@
-<div id="<%= dom_id post %>">
-  <h2><%= post.title %></h2>
-  <h4>Posted by <%= link_to post.user.name , user_path(post.user) %></h4>
-  <h6><%= pluralize(post.views, "view") %></h6>
-  <div>
-    <%= post.body %>
-  </div>
 
+
+<div class="card" style="width: 30rem;">
+  <h2><%= post.title %></h2>
+  <div class="card-body">
+    
+    <h5 class="card-title">Posted by <%= link_to post.user.name , user_path(post.user) %></h5>
+    <span class="badge bg-warning text-dark"><%= pluralize(post.views, "view") %></span>
+    <p class="card-text"><%= post.body %></p>
+    
+  </div>
 </div>

@@ -17,7 +17,7 @@ class Post < ApplicationRecord
         ["comments",  "user"]
     end
 
-    friendly_id :title, use: %i[slugged history finders]
+    friendly_id :title, use: %i[slugged history]
 
     def should_generate_new_friendly_id?
         title_changed? || slug.blank?

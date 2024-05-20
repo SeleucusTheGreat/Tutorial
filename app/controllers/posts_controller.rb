@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    
     @post.update(views: @post.views + 1)
     @comments = @post.comments.includes([:user, :rich_text_body])
     mark_notification_as_read
@@ -72,7 +73,7 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.friendly.find(params[:id])
       redirect_to @post, status: :moved_permanently if params[:id] !=@post.slug
     end
 
@@ -83,8 +84,6 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:title, :body, :slug)
-
-      
     end
 
     def mark_notification_as_read
